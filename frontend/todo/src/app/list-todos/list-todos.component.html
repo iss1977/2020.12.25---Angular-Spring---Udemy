@@ -1,0 +1,28 @@
+<h1>My Todo App</h1>
+
+<div class="container">
+  <table class="table">
+    <caption> My todo's</caption>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>is Completed?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{todo.description}}</td>
+        <td>{{todo.targetDate | date | lowercase}}</td>
+        <td>{{todo.done}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- This is only a test. -->
+  <ng-container *ngIf="methodName('parameters') as respObject">
+    {{respObject.name}}
+  </ng-container>
+  <!-- This is only a test. -->
+</div>
