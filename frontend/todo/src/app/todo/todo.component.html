@@ -1,0 +1,22 @@
+<h1>Todo</h1>
+<div class="container">
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm = "ngForm">  <!--#todoForm will be a reference to this form and can be used for validation-->
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" [(ngModel)]="todo.description" class="form-control" name="description" required="required" minlength="5" #description="ngModel">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input type="date" [ngModel]="todo.targetDate |date:'yyyy-MM-dd'" (ngModelChange)="todo.targetDate= $event"
+        class="form-control" name="targetDate" required="required" #targetDate="ngModel">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button> <!-- We removed  (click)="saveTodo()" here, while it will be submitted via ngSubmit (see line 3 of this file)-->
+  </form>
+
+  <br>
+  <div class="alert alert-warning" *ngIf="todoForm.invalid && todoForm.dirty">You have an error in your form</div> <!--Dirty means that min 1 field has been changed-->
+  <div class="alert alert-warning" *ngIf="targetDate.invalid && todoForm.dirty">Date is invalid</div>
+  <div class="alert alert-warning" *ngIf="description.invalid && todoForm.dirty">Enter minimum 5 characters in the description</div>
+</div>
