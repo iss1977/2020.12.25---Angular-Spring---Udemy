@@ -30,7 +30,7 @@ public class SpringSecurityBasicAuth  extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated().and()
-            .httpBasic();
+            .httpBasic().and().cors();
 //        http.formLogin();
 //        http.httpBasic();
         }
