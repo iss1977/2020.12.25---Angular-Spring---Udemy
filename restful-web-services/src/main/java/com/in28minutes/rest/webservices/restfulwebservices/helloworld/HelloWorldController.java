@@ -25,4 +25,10 @@ public class HelloWorldController {
         return new HelloWorldBean(String.format("<h1>Hello World %s</h1>",name));
     }
 
+    //Added extra, not in course included. It will be called from static index.html
+    @GetMapping("/hello")
+    public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
+        return String.format("Hello %s!", name);
+    }
+
 }
