@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {map} from 'rxjs/operators'
+import { API_URL } from '../app.constants'
 
 export const TOKEN = 'mytoken'
 export const AUTHENTICATED_USER = 'authenticatedUser'
@@ -39,7 +40,7 @@ export class BasicAuthenticationService {
 
 
     return (this.http.get<AuthenticationBean>(
-      `http://localhost:8080/basicauth`,
+      `${API_URL}/basicauth`,
       { headers: myHeader })) // we add myHeader as headers that will be an HttpHeaders object containing the login information. you can omit "headers" and just put in "{myHeader}"
       .pipe( // 28min says: pipe what should be done if the request successes. We will use this in login.component.ts
         map(
