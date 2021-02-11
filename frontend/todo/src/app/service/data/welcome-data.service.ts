@@ -28,29 +28,30 @@ export class WelcomeDataService {
   //
   executeHelloWorldBeanServiceWithPathVariable(name: string): any {
 
-    // created encoded string with user and password:
-    let basicAuthHeaderString= this.createBasicAuthenticationHttpHeader();
+    // // created encoded string with user and password:
+    // let basicAuthHeaderString= this.createBasicAuthenticationHttpHeader();
 
-    //HttpHeaders is an Angular object (see import on top) and will be used to be send with the next GET request.
-    let myHeader = new HttpHeaders({
-      Authorization : basicAuthHeaderString
-    })
+    // //HttpHeaders is an Angular object (see import on top) and will be used to be send with the next GET request.
+    // let myHeader = new HttpHeaders({
+    //   Authorization : basicAuthHeaderString
+    // })
 
 
     return (this.http.get<HelloWorldBean>(
       `http://localhost:8080/hello-world-bean/path-variable/${name}`,
-      {headers : myHeader})) // we add myHeader as headers that will be an HttpHeaders object containing the login information. you can omit "headers" and just put in "{myHeader}"
-
+      // {headers : myHeader})) // we add myHeader as headers that will be an HttpHeaders object containing the login information. you can omit "headers" and just put in "{myHeader}"
+    ))
   }
 
-  createBasicAuthenticationHttpHeader(): string {
-      let username = "user"
-      let password = "password"
+  // is not used anymore
+  // createBasicAuthenticationHttpHeader(): string {
+  //     let username = "user"
+  //     let password = "password"
 
-      // there is a javascript function called window.btoa to encode a string
-      let basicAuthHeaderString = "Basic " + window.btoa( username+":"+password ) // the space after "BASIC " is important
-      return  basicAuthHeaderString
-  }
+  //     // there is a javascript function called window.btoa to encode a string
+  //     let basicAuthHeaderString = "Basic " + window.btoa( username+":"+password ) // the space after "BASIC " is important
+  //     return  basicAuthHeaderString
+  // }
 
 
   // Access to XMLHttpRequest at 'http://localhost:8080/hello-world-bean' from origin 'http://localhost:4200' has been blocked by CORS policy:

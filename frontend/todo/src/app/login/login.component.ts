@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BasicAuthenticationService } from '../service/basic-authentication.service';
 import { HartcodedAuthenticationService } from '../service/hartcoded-authentication.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   errorMessage: string = 'Invalid credentials'
   invalidLogin = false
 
-  constructor(private router: Router, public hartcodedAuthenticationService: HartcodedAuthenticationService) { }
+  constructor(
+    private router: Router,
+    public hartcodedAuthenticationService: HartcodedAuthenticationService,
+    public basicAuthenticationService: BasicAuthenticationService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -29,4 +34,22 @@ export class LoginComponent implements OnInit {
     } else
       this.invalidLogin = true
   }
-}
+
+  handleBasicAuthLogin(): void {
+    // console.log(this.username + "," + this.password);
+
+    this.basicAuthenticationService.executeAuthenticationService(this.username, this.password)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['welcome', this.username])
+          this.invalidLogin = false
+        },
+        error => {
+          console.error(error)
+          this.invalidLogin = true
+        }
+      )
+  }
+
+}  // end of class LoginComponent
