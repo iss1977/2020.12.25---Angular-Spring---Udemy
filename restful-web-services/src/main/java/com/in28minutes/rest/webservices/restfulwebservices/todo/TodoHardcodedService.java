@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class TodoHardcodedService {
-    private static List<Todo> todos = new ArrayList();
+    private static List<Todo> todos = new ArrayList<Todo>();
     private static int idCounter = 0;
 
     static{

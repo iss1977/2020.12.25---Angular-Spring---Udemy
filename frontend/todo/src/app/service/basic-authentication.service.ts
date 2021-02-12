@@ -45,6 +45,8 @@ export class BasicAuthenticationService {
       .pipe( // 28min says: pipe what should be done if the request successes. We will use this in login.component.ts
         map(
           data => {
+            console.log("Running inside basic-authentication.service.ts -> pipe -> map with following data")
+            console.log(data)
             window.sessionStorage.setItem(AUTHENTICATED_USER, username)
             sessionStorage.setItem(TOKEN, basicAuthHeaderString) // 28min uses "token" here
             return data

@@ -36,12 +36,13 @@ export class LoginComponent implements OnInit {
   }
 
   handleBasicAuthLogin(): void {
-    // console.log(this.username + "," + this.password);
-
+    console.warn("Starting login.component.ts : handleBasicAuthLogin()")
+    console.log("Auth Login with: "+this.username + "," + this.password);
     this.basicAuthenticationService.executeAuthenticationService(this.username, this.password)
       .subscribe(
         data => {
-          console.log(data);
+          console.log("login.component.ts: executing the subscribe method . Retrieved data from Server");
+          console.log(data)
           this.router.navigate(['welcome', this.username])
           this.invalidLogin = false
         },

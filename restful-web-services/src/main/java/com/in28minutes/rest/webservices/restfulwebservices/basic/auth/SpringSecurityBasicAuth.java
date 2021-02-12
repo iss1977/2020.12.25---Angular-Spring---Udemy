@@ -21,7 +21,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 
 
 @Configuration
-@EnableWebSecurity//this configuration file refears to Spring Web Security Configuration
+@EnableWebSecurity//this configuration file refers to Spring Web Security Configuration
 public class SpringSecurityBasicAuth  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
