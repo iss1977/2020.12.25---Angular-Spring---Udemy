@@ -28,7 +28,8 @@ public class SpringSecurityBasicAuth  extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable() // We disable csrf(). Later will be using JWT for protection
             .authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/hello").permitAll()
             .anyRequest().authenticated().and()
             .httpBasic().and().cors();
 //        http.formLogin();
