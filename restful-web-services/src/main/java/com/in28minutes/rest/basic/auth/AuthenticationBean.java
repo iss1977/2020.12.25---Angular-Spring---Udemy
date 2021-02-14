@@ -1,4 +1,12 @@
-package com.in28minutes.rest.webservices.restfulwebservices.basic.auth;
+/*We moved this package  
+ * from com.in28minutes.rest.webservices.restufulwebservices.basic.auth
+ * to com.in28minutes.rest.basic.auth
+ * 
+ * This way we disable the containing class because thei are not picked up by springboot.
+ * Only classes in com.in28minutes.rest.webservices.restufulwebservices.* will be picked up and used.
+ * 
+ * */
+package com.in28minutes.rest.basic.auth;
 
 public class AuthenticationBean {
 
