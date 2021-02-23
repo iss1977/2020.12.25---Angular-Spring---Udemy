@@ -1,4 +1,4 @@
-package com.in28minutes.rest.basic.auth;
+package com.catrescue.rest.basic.auth;
 
 import org.springframework.web.bind.annotation.*;
 

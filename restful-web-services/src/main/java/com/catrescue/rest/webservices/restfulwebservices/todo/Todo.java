@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.todo;
+package com.catrescue.rest.webservices.restfulwebservices.todo;
 
 import java.util.Date;
 import java.util.Objects;

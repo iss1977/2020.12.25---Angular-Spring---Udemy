@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.jwt;
+package com.catrescue.rest.webservices.restfulwebservices.jwt;
 
 
 

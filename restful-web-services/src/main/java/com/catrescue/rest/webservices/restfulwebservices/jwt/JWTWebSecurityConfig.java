@@ -1,5 +1,7 @@
-package com.in28minutes.rest.webservices.restfulwebservices.jwt;
+package com.catrescue.rest.webservices.restfulwebservices.jwt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +24,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private JwtUnAuthorizedResponseAuthenticationEntryPoint jwtUnAuthorizedResponseAuthenticationEntryPoint;
@@ -34,6 +38,12 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${jwt.get.token.uri}")
     private String authenticationPath;
+    
+    
+    // added for registration
+    @Value("${jwt.post.register.uri}")
+    private String registrationPath;
+        
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -79,6 +89,10 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 HttpMethod.POST,
                 authenticationPath
             )
+            .antMatchers(
+                    HttpMethod.POST,
+                    registrationPath
+            )
             .antMatchers(HttpMethod.OPTIONS, "/**")
             .and()
             .ignoring()
@@ -89,6 +103,9 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .ignoring()
             .antMatchers("/h2-console/**/**");//Should not be in Production!
+        
+        logger.info("Registration path for new users is : "+registrationPath);
+        
     }
 }
 

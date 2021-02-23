@@ -6,7 +6,7 @@
  * Only classes in com.in28minutes.rest.webservices.restufulwebservices.* will be picked up and used.
  * 
  * */
-package com.in28minutes.rest.basic.auth;
+package com.catrescue.rest.basic.auth;
 
 public class AuthenticationBean {
 
